@@ -10,10 +10,10 @@ import random
 
 def name_to_number(name):
     """
-    Given string name, return integer 0, 1, 2, 3, or 4 
+    Given string name, return integer 0, 1, 2, 3, or 4
     corresponding 'rock', 'Spock', 'paper', 'lizard', 'scissors'
     """
-    
+
     if name == 'rock':
         number = 0
     elif name == 'Spock' or name == 'spock':
@@ -40,7 +40,7 @@ def number_to_name(number):
     Given integer number (0, 1, 2, 3, or 4)
     corresponding name from video
     """
-    
+
     if number == 0:
         name = 'rock'
     elif number == 1:
@@ -69,28 +69,28 @@ def rpsls_action(first, second):
         elif first or second == 'lizard':
             action = 'decapitates'
         return action
-       
+
     if first or second == 'paper':
         if first or second == 'rock':
             action = 'covers'
         elif first.lower() or second.lower() == 'spock':
             action = 'disproves'
         return action
-       
+
     if first or second == 'rock':
         if first or second == 'lizard':
             action = 'crushes'
         elif first or second == 'scissors':
             action = 'crushes'
         return action
-    
+
     if first or second == 'lizard':
         if first.lower() or second.lower() == 'spock':
             action = 'poisons'
         elif first or second == 'paper':
             action = 'eats'
         return action
-            
+
     if first.lower() or second.lower() == 'spock':
         if first or second == 'scissors':
             action = 'smashes'
@@ -101,28 +101,28 @@ def rpsls_action(first, second):
 
 def rpsls(player_choice):
     """
-    Given string player_choice, play a game 
+    Given string player_choice, play a game
     of RPSLS and print results to console
     """
-    
+
     print("")
     print("Player has chosen", player_choice)
     player_number = name_to_number(player_choice)
-    
+
     comp_number = random.randrange(0,4)
     comp_choice = number_to_name(comp_number)
     print("The computer has chosen", comp_choice)
     print('')
-    
+
     result = (player_number - comp_number) % 5
 
-      
+
     if result == 3 or result == 4:
         print('Computer wins!')
         action = rpsls_action(player_choice, comp_choice)
         print(comp_choice, 'beats', player_choice)
         print(comp_choice, action, player_choice)
-        
+
     elif result == 1 or result == 2:
         print('Player wins!')
         action = rpsls_action(player_choice, comp_choice)
@@ -130,15 +130,3 @@ def rpsls(player_choice):
         print(player_choice, action, comp_choice)
     else:
         print('Tie, try again!')
-        
-
-
-
-
-
-
-
-
-
-
-
